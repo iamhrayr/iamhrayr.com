@@ -29,6 +29,15 @@ $(document).ready(function(){
         // barcolor: 'blue'
 
     });
+    $(window).on('scroll', function() {
+	    if ($('.homeProgresses').isOnScreen()) {
+	    	setTimeout(function(){
+	    		$('.pie_progress').asPieProgress('start');
+				$(window).off('scroll');
+	    	},200)
+	    }
+	});
+
 
 	/**
 	 * scrollr initialization
@@ -62,7 +71,7 @@ $(document).ready(function(){
 	}
 
 	function handle(delta) {
-	    var animationInterval = 10; //lower is faster
+	    var animationInterval = 2	0; //lower is faster
 	    var scrollSpeed = 30; //lower is faster
 
 	    if (end == null) {
@@ -87,6 +96,32 @@ $(document).ready(function(){
 	        }, animationInterval);
 	    }
 	}
+
+
+	/**
+	 * check if element is in viewport
+	 */
+	$.fn.isOnScreen = function(){
+	    var win = $(window);
+	    var viewport = {
+	        top : win.scrollTop(),
+	        left : win.scrollLeft()
+	    };
+	    viewport.right = viewport.left + win.width();
+	    viewport.bottom = viewport.top + win.height();
+	    
+	    var bounds = this.offset();
+	    bounds.right = bounds.left + this.outerWidth();
+	    bounds.bottom = bounds.top + this.outerHeight();
+	    
+	    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+	};
+
+
+	/**
+	 * Initialize wow.js
+	 */
+	new WOW().init();
 
 
 

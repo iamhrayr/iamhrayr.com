@@ -187,6 +187,7 @@
 .imgDivider {
 	@include bgCover();
 	padding: 140px 0;
+	position: relative;
 	h4 {
 		font-size: $fontSize + 6px;
 		letter-spacing: 2px;
@@ -219,3 +220,28 @@
 	padding: 122px 0;
 	margin-top: -120px;
 }
+
+/* parallax image */
+.parallaxImgWrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: .5;
+	.layer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		background-size: 100%;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+}
+/* end parallax image */
