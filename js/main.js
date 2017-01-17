@@ -121,7 +121,11 @@ $(document).ready(function(){
 	/**
 	 * Initialize wow.js
 	 */
-	new WOW().init();
+	 Pace.on('done', function(){
+	 	console.log('bububu')
+	 	$('.pace').fadeOut();
+		new WOW().init();
+	 })
 
 
 
