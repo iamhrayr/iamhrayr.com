@@ -71,7 +71,7 @@ $(document).ready(function(){
 	}
 
 	function handle(delta) {
-	    var animationInterval = 2	0; //lower is faster
+	    var animationInterval = 20; //lower is faster
 	    var scrollSpeed = 30; //lower is faster
 
 	    if (end == null) {
