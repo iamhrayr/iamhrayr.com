@@ -10,6 +10,7 @@ body {
 }
 * {
 	@include boxSizing(border-box);
+	outline: none;
 }
 main {
 	display: block;
@@ -29,6 +30,11 @@ a {
 .container {
 	margin: 0 auto;
 	width: $layoutWidth;
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
 }
 img {
 	vertical-align: middle; /* remove whitespace */
@@ -197,4 +203,8 @@ hr {
 
 .skrollable {
 	// position: fixed;
+}
+
+figure {
+	margin: 0;
 }

@@ -30,7 +30,7 @@ $(document).ready(function(){
 
     });
     $(window).on('scroll', function() {
-	    if ($('.homeProgresses').isOnScreen()) {
+	    if ($('.homeProgresses').length && $('.homeProgresses').isOnScreen()) {
 	    	setTimeout(function(){
 	    		$('.pie_progress').asPieProgress('start');
 				$(window).off('scroll');
@@ -43,6 +43,7 @@ $(document).ready(function(){
 	 * scrollr initialization
 	 */
     var s = skrollr.init({
+    	forceHeight: false
     	// animate: true,
     	// smoothScrolling: true,
     	// smoothScrollingDuration: 500,
@@ -96,6 +97,16 @@ $(document).ready(function(){
 	        }, animationInterval);
 	    }
 	}
+	/*## End scroll smoothly */
+
+
+	/**
+	 * Nice Scroll
+	 */
+	// $("html").niceScroll({
+	// 	scrollspeed: 300, // scrolling speed
+	//     mousescrollstep: 30,
+	// });
 
 
 	/**
@@ -121,11 +132,65 @@ $(document).ready(function(){
 	/**
 	 * Initialize wow.js
 	 */
-	 Pace.on('done', function(){
-	 	console.log('bububu')
+	Pace.on('done', function(){
 	 	$('.pace').fadeOut();
 		new WOW().init();
-	 })
+	});
+
+
+	/**
+	 * isotope grid
+	 */
+	var $grid = $('.grid').isotope({
+		itemSelector: '.grid-item',
+		percentPosition: true,
+		layoutMode: 'packery',
+		masonry: {
+			columnWidth: '.grid-sizer',
+  		},
+  		packery: {
+  			columnWidth: '.grid-sizer',
+		  	// gutter: 10
+		},
+  		hiddenStyle: {
+  			opacity: 0
+  		},
+  		visibleStyle: {
+  			opacity: 1
+  		}
+	});
+
+	// filter items on button click
+	$('.filter-button-group').on( 'click', 'button', function() {
+		var filterValue = $(this).attr('data-filter');
+		$grid.isotope({ filter: filterValue });
+		// active button class
+		$('.filter-button-group').find('button').removeClass('active');
+		$(this).addClass('active');
+	});
+	$grid.isotope({ sortBy : 'original-order' });
+	/*## end of isotope */
+
+
+	/**
+	 * magnific popup
+	 */
+	$(function () {
+		$('.openModalBtn').magnificPopup({
+			type: 'inline',
+			removalDelay: 300,
+			mainClass: 'mfp-fade'
+
+			// fixedContentPos: false
+			// preloader: false,
+			// focus: '#username',
+			// modal: true
+		});
+		$(document).on('click', '.clodeModalBtn', function (e) {
+			e.preventDefault();
+			$.magnificPopup.close();
+		});
+	});
 
 
 

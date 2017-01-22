@@ -17,7 +17,6 @@
 .heroTxt {
 	position: relative;
 	z-index: 1;
-	line-height: .7;
 	padding: 15px 0;
 	width: 100%;
 	pointer-events: none;
@@ -30,6 +29,7 @@
 	font-size: 100px;
 	transform-origin: 0 0;
 	position: relative;
+	line-height: .7;
 	float: left;
 	h1, h2, h5 {
 		margin: 0 0 10px;
@@ -56,15 +56,7 @@
 		padding-left: .2em;
 	}
 }
-.navWrapp {
-	float: right;
-	font-size: 34px;
-	color: $orange;
-	button {
-		color: inherit;
-		pointer-events: initial;
-	}
-}
+
 .tilt__front {
 	@include transition(transform .15s);
 }

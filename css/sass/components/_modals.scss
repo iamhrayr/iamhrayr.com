@@ -1,0 +1,67 @@
+.mfp-container {
+	padding: 0; 
+}
+.mfp-content {
+	height: 100%;
+}
+.fullpageModal {
+	display: block;
+    background: url(../img/site-bg.png) repeat;
+    // background: #fff;
+    min-height: 100%;
+    .mfp-close {
+    	left: 0;
+    	right: initial;
+    	z-index: 1;
+    	color: $orange;
+    }
+}
+.folioItemTxt {
+	padding-top: 120px;
+	color: #fff;
+	font-weight: 300;
+	h2 {
+		font-weight: 300;
+		letter-spacing: 0;
+		font-size: $fontSize + 22px;
+		color: $orange;
+	}
+}
+.itemTxtInner {
+	padding-right: 40px;
+}
+
+
+/* overlay at start */
+.mfp-fade.mfp-bg {
+  opacity: 0;
+
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.8;
+}
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}

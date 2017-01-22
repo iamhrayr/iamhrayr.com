@@ -1,0 +1,42 @@
+.grid {
+	margin: -6px;
+}
+.grid-sizer {
+    width: 25%;
+}
+.grid-item{
+    width: 25%;
+    padding: 8px;
+    img {
+		width: 100%;
+    }
+}
+
+.grid-item--width2 {
+    width: 50%;
+}
+.folioFilterBtns {
+	margin: 30px -20px;
+	font-weight: 300;
+	button {
+		color: #fff;
+		padding: 0 20px;
+		opacity: .7;
+		&.active {
+			opacity: 1;
+		}
+	}
+}
+.folioItemTxt {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.folioItemImages {
+	width: 50%;
+	margin-left: auto;
+	img {
+		width: 100%;
+	}
+}
