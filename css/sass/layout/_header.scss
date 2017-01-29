@@ -6,10 +6,44 @@
 	float: right;
 	font-size: 34px;
 	color: $orange;
+	position: relative;
 	button {
 		display: block;
 		color: inherit;
 		pointer-events: initial;
+		position: relative;
+		z-index: 22;
+	}
+	nav {
+		position: fixed;
+		z-index: 21;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		background: rgba(40,40,40,.95);
+		pointer-events: initial;
+		text-align: right;
+		ul {
+			&:hover {
+				a {
+					opacity: .4;
+				}
+			}
+			a {
+				@include transition(.7s opacity, .7s color);
+				color: #fff;
+				font-size: 60px;
+				text-transform: uppercase;
+				font-weight: 600;
+				line-height: 1.2;
+				color: $color;
+				&:hover {
+					color: $orange;
+					opacity: 1;
+				}
+			}
+		}
 	}
 }
 header {

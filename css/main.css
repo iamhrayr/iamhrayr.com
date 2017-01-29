@@ -682,11 +682,41 @@ figure {
 .navWrapp {
   float: right;
   font-size: 34px;
-  color: #ce710e; }
+  color: #ce710e;
+  position: relative; }
   .navWrapp button {
     display: block;
     color: inherit;
-    pointer-events: initial; }
+    pointer-events: initial;
+    position: relative;
+    z-index: 22; }
+  .navWrapp nav {
+    position: fixed;
+    z-index: 21;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(40, 40, 40, 0.95);
+    pointer-events: initial;
+    text-align: right; }
+    .navWrapp nav ul:hover a {
+      opacity: .4; }
+    .navWrapp nav ul a {
+      -webkit-transition: 0.7s opacity, 0.7s color;
+      -moz-transition: 0.7s opacity, 0.7s color;
+      -ms-transition: 0.7s opacity, 0.7s color;
+      -o-transition: 0.7s opacity, 0.7s color;
+      transition: 0.7s opacity, 0.7s color;
+      color: #fff;
+      font-size: 60px;
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #9f9f9f; }
+      .navWrapp nav ul a:hover {
+        color: #ce710e;
+        opacity: 1; }
 
 header {
   border-top: solid 18px #151515; }

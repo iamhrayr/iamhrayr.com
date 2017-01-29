@@ -7,7 +7,7 @@
 
 	<!-- include css files -->
 	<link rel="stylesheet" href="https://file.myfontastic.com/y6dKf8i7jugHXqYtxSVuPH/icons.css">
-	<link rel="stylesheet" href="bower_components/wow/css/libs/animate.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/tilteffect.css">
 	<link rel="stylesheet" href="css/asPieProgress.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
@@ -16,6 +16,8 @@
 	<!-- include js files -->
 	<script src="js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/TextPlugin.min.js"></script>
 	<script src="js/jquery-asPieProgress.js"></script>
 	<script src="js/tiltfx.js"></script>
 	<script src="js/skrollr.js"></script>
@@ -52,7 +54,17 @@
 					<div class="navWrapp" 
 						data-300="opacity: 0;"
 						data-500="opacity: 1;">
-						<button><i class="icon-bars"></i></button>
+						<button class="navToggle"><i class="icon-bars"></i></button>
+						<nav style="display: none;">
+							<div class="container">
+								<ul class="list mt70">
+									<li><a href="#">Home</a></li>
+									<li><a href="#">Portfolio</a></li>
+									<li><a href="#">Contact</a></li>
+									<li><a href="#">About me</a></li>
+								</ul>
+							</div>
+						</nav>
 					</div>
 				</div>
 			</div>

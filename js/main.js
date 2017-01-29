@@ -54,50 +54,71 @@ $(document).ready(function(){
     /**
 	 * scroll smoothly
 	 */
-	if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
-	window.onmousewheel = document.onmousewheel = wheel;
+	// if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
+	// window.onmousewheel = document.onmousewheel = wheel;
 
-	var goUp = true;
-	var end = null;
-	var interval = null;
+	// var goUp = true;
+	// var end = null;
+	// var interval = null;
 
-	function wheel(event) {
-	    var delta = 0;
-	    if (event.wheelDelta) delta = event.wheelDelta / 120;
-	    else if (event.detail) delta = -event.detail / 3;
+	// function wheel(event) {
+	//     var delta = 0;
+	//     if (event.wheelDelta) delta = event.wheelDelta / 120;
+	//     else if (event.detail) delta = -event.detail / 3;
 
-	    handle(delta);
-	    if (event.preventDefault) event.preventDefault();
-	    event.returnValue = false;
-	}
+	//     handle(delta);
+	//     if (event.preventDefault) event.preventDefault();
+	//     event.returnValue = false;
+	// }
 
-	function handle(delta) {
-	    var animationInterval = 20; //lower is faster
-	    var scrollSpeed = 30; //lower is faster
+	// function handle(delta) {
+	//     var animationInterval = 20; //lower is faster
+	//     var scrollSpeed = 30; //lower is faster
 
-	    if (end == null) {
-	        end = $(window).scrollTop();
-	    }
-	    end -= 20 * delta;
-	    goUp = delta > 0;
+	//     if (end == null) {
+	//         end = $(window).scrollTop();
+	//     }
+	//     end -= 20 * delta;
+	//     goUp = delta > 0;
 
-	    if (interval == null) {
-	        interval = setInterval(function() {
-	            var scrollTop = $(window).scrollTop();
-	            var step = Math.round((end - scrollTop) / scrollSpeed);
-	            if (scrollTop <= 0 ||
-	                scrollTop >= $(window).prop("scrollHeight") - $(window).height() ||
-	                goUp && step > -1 ||
-	                !goUp && step < 1) {
-	                clearInterval(interval);
-	                interval = null;
-	                end = null;
-	            }
-	            $(window).scrollTop(scrollTop + step);
-	        }, animationInterval);
-	    }
-	}
+	//     if (interval == null) {
+	//         interval = setInterval(function() {
+	//             var scrollTop = $(window).scrollTop();
+	//             var step = Math.round((end - scrollTop) / scrollSpeed);
+	//             if (scrollTop <= 0 ||
+	//                 scrollTop >= $(window).prop("scrollHeight") - $(window).height() ||
+	//                 goUp && step > -1 ||
+	//                 !goUp && step < 1) {
+	//                 clearInterval(interval);
+	//                 interval = null;
+	//                 end = null;
+	//             }
+	//             $(window).scrollTop(scrollTop + step);
+	//         }, animationInterval);
+	//     }
+	// }
 	/*## End scroll smoothly */
+
+
+	/**
+	 * smooth scroll v2
+	 */
+	var $window = $(window);
+	var scrollTime = 1;
+	var scrollDistance = 200;
+	$window.on("mousewheel DOMMouseScroll", function(event){
+		event.preventDefault();	
+		var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+		var scrollTop = $window.scrollTop();
+		var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+		TweenMax.to($window, scrollTime, {
+			scrollTo : { y: finalScroll, autoKill:true },
+				ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+				autoKill: true,
+				overwrite: 5
+			}
+		);
+	});
 
 
 	/**
@@ -169,7 +190,6 @@ $(document).ready(function(){
 		$(this).addClass('active');
 	});
 	$grid.isotope({ sortBy : 'original-order' });
-	/*## end of isotope */
 
 
 	/**
@@ -192,6 +212,24 @@ $(document).ready(function(){
 		});
 	});
 
+
+	/**
+	 * Hambuger navigation
+	 */
+	var isNavOpen = false; 
+	var nav = $('.navToggle').next('nav');
+	var navTl = new TimelineMax();
+ 	$('.navToggle').on('click', function(){
+ 		if (!isNavOpen) {
+			navTl.fromTo(nav, .7, {display: 'none', opacity: 0}, {display: 'block', opacity: 1})
+				.staggerFromTo(nav.find('li'), .8, {opacity:0, x:-10}, {opacity:1, x:0}, .2);
+			isNavOpen = !isNavOpen;
+		} else {
+			navTl.staggerFromTo(nav.find('li'), .3, {opacity:1, x:0}, {opacity:0, x:-10}, .1)
+				.fromTo(nav, .7, {display: 'block', opacity: 1}, {display: 'none', opacity: 0});
+			isNavOpen = !isNavOpen;
+		}
+ 	});
 
 
 
