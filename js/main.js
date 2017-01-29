@@ -113,11 +113,10 @@ $(document).ready(function(){
 		var finalScroll = scrollTop - parseInt(delta*scrollDistance);
 		TweenMax.to($window, scrollTime, {
 			scrollTo : { y: finalScroll, autoKill:true },
-				ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-				autoKill: true,
-				overwrite: 5
-			}
-		);
+			ease: SlowMo.easeOut,	//For more easing functions - http://api.greensock.com/js/com/greensock/easing/package-detail.html
+			autoKill: true,
+			overwrite: 1
+		});
 	});
 
 
