@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 
     /**
-	 * scroll smoothly
+	 * scroll smoothly v1
 	 */
 	// if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
 	// window.onmousewheel = document.onmousewheel = wheel;
@@ -118,6 +118,65 @@ $(document).ready(function(){
 			overwrite: 1
 		});
 	});
+
+
+	/**
+	 * smooth scroll v3
+	 */
+	/* enable mousewheel.js */
+	// (function (e) {
+	// 	"use strict";
+	// 	e.srSmoothscroll = function (t) {
+	// 		var platform = window.navigator.platform;
+	// 		if ((platform === 'MacIntel' || platform === 'MacPPC')) {
+	// 			return false
+	// 		};
+	// 		var n = e.extend({
+	// 			step: 170,
+	// 			speed: 1000,
+	// 			ease: "swing"
+	// 		}, t || {});
+	// 		var r = e(window),
+	// 			i = e(document),
+	// 			s = 0,
+	// 			o = n.step,
+	// 			u = n.speed,
+	// 			a = r.height(),
+	// 			f = navigator.userAgent.indexOf("AppleWebKit") !== -1 ? e("body") : e("html"),
+	// 			l = false,
+	// 			rdy = 0;
+	// 		e("body").mousewheel(function (e, t) {
+	// 			l = true;
+	// 			if (rdy == 0) {
+	// 				rdy = 1;
+	// 				if (t < 0) s = r.scrollTop() + o;
+	// 				else s = r.scrollTop() - o;
+	// 			} else {
+	// 				if (t < 0) s = s + a >= i.height() ? s : s += o;
+	// 				else s = s <= 0 ? 0 : s -= o;
+	// 			}
+	// 			f.stop().animate({
+	// 				scrollTop: s
+	// 			}, u, n.ease, function () {
+	// 				l = false
+	// 			});
+	// 			return false
+	// 		});
+	// 		r.on("resize", function (e) {
+	// 			a = r.height()
+	// 		}).on("scroll", function (e) {
+	// 			if (!l) s = r.scrollTop()
+	// 		})
+	// 	}
+	// })(jQuery);
+	// $.srSmoothscroll({
+	// 	// defaults
+	// 	step: 55,
+	// 	speed: 400,
+	// 	ease: 'swing',
+	// 	target: $('body'),
+	// 	container: $(window)
+	// });
 
 
 	/**
